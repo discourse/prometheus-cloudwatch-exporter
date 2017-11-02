@@ -1,0 +1,5 @@
+[metric.alb_http]
+enabled = true
+
+[metric.alb_http.filter]
+TargetGroup = "/cdck-prod-meta-meta/"

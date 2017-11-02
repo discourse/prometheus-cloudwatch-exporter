@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/prom/config'
+require_relative '../lib/prom/extractor'
+require_relative '../lib/prom/metric'
+require_relative '../lib/prom/counter'
+
+
+if ARGV.length != 1
+  STDERR.puts "Usage: extract_metrics CONFIG"
+  exit 1
+end
+
+config = Prom::Config.load(ARGV[0])
+
+config.metrics.first.refresh_dimensions
+config.metrics.first.refresh
+
+exit
+extractor = Prom::Extractor.new(config)
+
+p extractor.extract
+
+# while true
+#   p extractor.extract
+#   sleep config.scrape_interval
+# end
