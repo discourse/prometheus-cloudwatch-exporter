@@ -4,8 +4,6 @@ module Prom
   class TestConfig < MiniTest::Test
     def test_can_define_counters
       toml = <<~TOML
-
-
       [counters]
 
       [counters.http_target_2xx_count]

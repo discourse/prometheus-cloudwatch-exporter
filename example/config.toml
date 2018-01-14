@@ -1,5 +1,18 @@
-[metric.alb_http]
-enabled = true
+# scrape every 1 second, default is 30
+scrape_interval = 1
 
-[metric.alb_http.filter]
+[counters]
+
+[counters.http_target_2xx_count]
+namespace = "AWS/ApplicationELB"
+name = "HTTPCode_Target_2XX_Count"
+
+[counters.http_target_2xx_count.dimension_filter]
+TargetGroup = "/cdck-prod-meta-meta/"
+
+[counters.http_target_3xx_count]
+namespace = "AWS/ApplicationELB"
+name = "HTTPCode_Target_3XX_Count"
+
+[counters.http_target_3xx_count.dimension_filter]
 TargetGroup = "/cdck-prod-meta-meta/"
